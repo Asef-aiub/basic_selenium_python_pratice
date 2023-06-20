@@ -1,5 +1,6 @@
 import time
 from selenium import webdriver
+from selenium.common import ElementNotVisibleException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
@@ -21,6 +22,8 @@ class DemoMouseOver():
         #achains.double_click(morebutton).perform()
         # time.sleep(3)
         wait=WebDriverWait(driver,10)
+        #poll frequency=2, fluent wait
+        # wait=WebDriverWait(driver,10,2,ignored_exceptions=[ElementNotVisibleException])
         wait.until(EC.element_to_be_clickable((By.XPATH,"//span[normalize-space()='Adventures']")))
         driver.find_element(By.XPATH,"//span[normalize-space()='Adventures']").click()
         time.sleep(3)
