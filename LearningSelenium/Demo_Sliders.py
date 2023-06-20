@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 class DemoSlider():
     def locate(self):
         driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+        driver.implicitly_wait(5)
         driver.get("https://www.startech.com.bd/component")
         driver.maximize_window()
         time.sleep(3)
