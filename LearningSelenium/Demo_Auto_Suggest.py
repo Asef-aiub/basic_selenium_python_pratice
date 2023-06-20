@@ -25,6 +25,7 @@ class DemoAutoSuggest():
             if "New York (LGA)" in i.text:
                 i.click()
                 time.sleep(2)
+                driver.find_element(By.XPATH,"//section[@class='wrapper']").click()
                 break
 
         driver.find_element(By.XPATH, "//input[@id='BE_flight_origin_date']").click()
