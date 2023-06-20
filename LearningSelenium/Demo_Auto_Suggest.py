@@ -24,9 +24,18 @@ class DemoAutoSuggest():
             print(i.text)
             if "New York (LGA)" in i.text:
                 i.click()
-                time.sleep(4)
+                time.sleep(2)
                 break
 
+        driver.find_element(By.XPATH, "//input[@id='BE_flight_origin_date']").click()
+        time.sleep(2)
+        dates=driver.find_elements(By.XPATH,"//div[@id='monthWrapper']//tbody//td[@class!='inActiveTD weekend']")
+        for date in dates:
+            if date.get_attribute("data-date")=="23/06/2023":
+                date.click()
+                time.sleep(3)
+                break
+        time.sleep(2)
 
 getAutoSuggest=DemoAutoSuggest()
 getAutoSuggest.locate()
