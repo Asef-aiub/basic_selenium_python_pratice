@@ -1,16 +1,17 @@
 import pytest
 import time
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from pages.launch_page import launchPage
 from pages.search_results_page import searchFlightResult
+from utilities.utils import utils
 
 
 @pytest.mark.usefixtures("setup")
 class TestSearchAndVerifyFilter():
     def testSearchFlights(self):
         lp=launchPage(self.driver)
-        lp.departfrom("New Delhi")
+        # lp.departfrom("New Delhi")
+        lp.enterDepartFromLocation("New Delhi")
         lp.destination("New York")
         lp.departuredate("21/08/2023")
         lp.search()
@@ -21,8 +22,6 @@ class TestSearchAndVerifyFilter():
         time.sleep(3)
         print("")
         print(len(allstops))
+        ut=utils()
+        ut.assertListText(allstops,"1 Stop")
 
-        for stop in allstops:
-            print(stop.text)
-            assert stop.text=="1 Stop"
-            print("assert pass")

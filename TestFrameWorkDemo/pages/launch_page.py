@@ -11,12 +11,22 @@ class launchPage(BaseDriver):
         super().__init__(driver)
         self.driver = driver
         # self.wait = wait
-    def departfrom(self,departlocation):
-        # departfrom=self.wait.until(EC.element_to_be_clickable((By.XPATH,"//input[@id='BE_flight_origin_city']")))
-        departfrom=self.wait_elements_clickable(By.XPATH,"//input[@id='BE_flight_origin_city']")
-        departfrom.click()
-        departfrom.send_keys(departlocation)
-        departfrom.send_keys(Keys.ENTER)
+
+    depart_from = "//input[@id='BE_flight_origin_city']"
+    def getDepartFrom(self):
+        return self.wait_elements_clickable(By.XPATH, self.depart_from)
+    def enterDepartFromLocation(self,departlocation):
+        self.getDepartFrom().click()
+        self.getDepartFrom().send_keys(departlocation)
+        self.getDepartFrom().send_keys(Keys.ENTER)
+
+
+    # def departfrom(self,departlocation):
+    #     # departfrom=self.wait.until(EC.element_to_be_clickable((By.XPATH,"//input[@id='BE_flight_origin_city']")))
+    #     departfrom=self.wait_elements_clickable(By.XPATH,"//input[@id='BE_flight_origin_city']")
+    #     departfrom.click()
+    #     departfrom.send_keys(departlocation)
+    #     departfrom.send_keys(Keys.ENTER)
     def destination(self,destinationlocation):
         # destination=self.wait.until(EC.element_to_be_clickable((By.XPATH,"//input[@id='BE_flight_arrival_city']")))
         destination=self.wait_elements_clickable(By.XPATH,"//input[@id='BE_flight_arrival_city']")
