@@ -1,4 +1,6 @@
 import time
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BaseDriver:
@@ -17,3 +19,11 @@ class BaseDriver:
                 match = True
 
         time.sleep(3)
+    def wait_presence_element_located(self,loacator_type,locator):
+        wait = WebDriverWait(self.driver, 10)
+        listofelements= wait.until(EC.presence_of_all_elements_located((loacator_type,locator)))
+        return listofelements
+    def wait_elements_clickable(self,loacator_type,locator):
+        wait = WebDriverWait(self.driver, 10)
+        element= wait.until(EC.element_to_be_clickable((loacator_type,locator)))
+        return element
