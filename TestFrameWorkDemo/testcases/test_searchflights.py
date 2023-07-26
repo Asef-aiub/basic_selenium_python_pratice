@@ -2,7 +2,7 @@ import pytest
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from pages.search_flight_results_page import launchPage
+from pages.launch_page import launchPage
 
 
 @pytest.mark.usefixtures("setup")
