@@ -10,15 +10,11 @@ from utilities.utils import utils
 class TestSearchAndVerifyFilter():
     def testSearchFlights(self):
         lp=launchPage(self.driver)
-        # lp.departfrom("New Delhi")
-        lp.enterDepartFromLocation("New Delhi")
-        lp.destination("New York")
-        lp.departuredate("21/08/2023")
-        lp.search()
+        lp.searchFlights("New Delhi","New york","21/08/2023")
         time.sleep(3)
         sf=searchFlightResult(self.driver)
-        sf.filterFlights()
-        allstops=sf.wait_presence_element_located(By.XPATH,"//span[contains(text(),'Non Stop') or contains(text(),'1 Stop')]")
+        sf.filter_flights_by_stop("1 Stop")
+        allstops=sf.getSearchFlightResult()
         time.sleep(3)
         print("")
         print(len(allstops))
