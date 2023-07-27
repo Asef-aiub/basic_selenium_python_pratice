@@ -10,6 +10,5 @@ def setup(request):
     driver.get("https://www.yatra.com/")
     driver.maximize_window()
     request.cls.driver = driver
-    # request.cls.wait = wait
     yield
     driver.quit()

@@ -1,23 +1,26 @@
 import pytest
 import time
-from selenium.webdriver.common.by import By
+import softest
 from pages.launch_page import launchPage
 from pages.search_results_page import searchFlightResult
 from utilities.utils import utils
-
+from ddt import ddt, data, unpack
 
 @pytest.mark.usefixtures("setup")
-class TestSearchAndVerifyFilter():
-    def testSearchFlights(self):
+@ddt
+class TestSearchAndVerifyFilter(softest.TestCase):
+    @data(*utils().read_data_from_excel("E:\\Python-Selenium\\TestFrameWorkDemo\\testdata\\tdataexcel.xlsx","Sheet1"))
+    @unpack
+    def testSearchFlights(self,going_from,going_to,depart_date,stops):
         lp=launchPage(self.driver)
-        lp.searchFlights("New Delhi","New york","21/08/2023")
+        lp.searchFlights(going_from,going_to,depart_date)
         time.sleep(3)
         sf=searchFlightResult(self.driver)
-        sf.filter_flights_by_stop("1 Stop")
+        sf.filter_flights_by_stop(stops)
         allstops=sf.getSearchFlightResult()
         time.sleep(3)
         print("")
         print(len(allstops))
         ut=utils()
-        ut.assertListText(allstops,"1 Stop")
+        ut.assertListText(allstops,stops)
 
