@@ -27,3 +27,8 @@ class BaseDriver:
         wait = WebDriverWait(self.driver, 10)
         element= wait.until(EC.element_to_be_clickable((loacator_type,locator)))
         return element
+
+    def wait_element_located(self, locator_type, locator):
+        wait = WebDriverWait(self.driver, 10)
+        element = wait.until(EC.presence_of_element_located((locator_type, locator)))
+        return element
