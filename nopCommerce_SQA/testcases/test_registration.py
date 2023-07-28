@@ -10,7 +10,7 @@ from ddt import ddt, data, unpack
 
 @pytest.mark.usefixtures("setup")
 @ddt
-class TestRegistration(softest.TestCase):
+class TestRegistration:
     @data(*utils().read_data_from_excel("E:\\Python-Selenium\\nopCommerce_SQA\\testdata\\registration_data.xlsx","Sheet1"))
     @unpack
     def testRegister(self,type,dobDay,dobMonth,dobYear,firstName,
