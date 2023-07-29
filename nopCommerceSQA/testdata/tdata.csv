@@ -1,0 +1,2 @@
+type,dobDay,dobMonth,dobYear,firstName,lastName,companyName,dynamicEmail,password,confirmPassword,newsletter
+Male,10,5,2000,rajib,haider,bs23,abc121@gmail.com,1234561,1234561,cheacked

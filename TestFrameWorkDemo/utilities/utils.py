@@ -1,3 +1,5 @@
+import csv
+
 import softest
 from openpyxl import Workbook, load_workbook
 class utils(softest.TestCase):
@@ -24,3 +26,11 @@ class utils(softest.TestCase):
                 row.append(sh.cell(row=i,column=j).value)
             datalist.append(row)
         return datalist
+    # def read_data_from_csv(self,filename):
+    #     datalist=[]
+    #     csvdata=open(filename,"r")
+    #     reader=csv.reader(csvdata)
+    #     next(reader)
+    #     for rows in reader:
+    #         datalist.append(rows)
+    #     return datalist

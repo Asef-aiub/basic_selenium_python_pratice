@@ -1,5 +1,4 @@
 import time
-import unittest
 import pytest
 from pages.home_page import HomePage
 from pages.reg_success_page import RegSuccessPage
@@ -10,8 +9,9 @@ from utilities.utils import utils
 
 @pytest.mark.usefixtures("setup")
 @ddt
-class TestRegistration(unittest.TestCase):
-    @data(*utils().read_data_from_excel("E:\\Python-Selenium\\nopCommerce_SQA\\testdata\\tdataexcel.xlsx","Registration"))
+class TestRegistration():
+    # @data(*utils().read_data_from_excel("E:\\Python-Selenium\\nopCommerce_SQA\\testdata\\tdataexcel.xlsx","Sheet1"))
+    @data(*utils().read_data_from_csv("E:\\Python-Selenium\\nopCommerceSQA\\testdata\\tdata.csv"))
     @unpack
 
     def testRegister(self,type,dobDay,dobMonth,dobYear,firstName,

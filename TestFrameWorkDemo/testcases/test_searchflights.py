@@ -10,6 +10,7 @@ from ddt import ddt, data, unpack
 @ddt
 class TestSearchAndVerifyFilter(softest.TestCase):
     @data(*utils().read_data_from_excel("E:\\Python-Selenium\\TestFrameWorkDemo\\testdata\\tdataexcel.xlsx","Sheet1"))
+    # @data(*utils().read_data_from_csv("E:\\Python-Selenium\\TestFrameWorkDemo\\testdata\\tdatacsv.csv"))
     @unpack
     def testSearchFlights(self,going_from,going_to,depart_date,stops):
         lp=launchPage(self.driver)
