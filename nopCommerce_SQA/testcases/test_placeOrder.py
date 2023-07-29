@@ -1,7 +1,7 @@
 import time
 import unittest
-
 import pytest
+# import schedule
 from pages.account_page import AccountPage
 from pages.add_to_cart_page import AddCartPage
 from pages.billing_page import BillingPage
@@ -35,3 +35,7 @@ class TestPlaceOrder(unittest.TestCase):
         osp=OrderSuccessPage(self.driver)
         print(osp.getOrderSuccessMsgText())
         time.sleep(3)
+    # schedule.every().day.at("17:45").do(testPlaceOrder)
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1)
